@@ -37,8 +37,3 @@ resource "azurerm_resource_group" "just_another_rg" {
 
 ```
 
-#### If developing a module ####
-
-You can incorporate common.tags into another module. The example below 
-provides support for setting tags in your top level code, ship those tags to the module, which ships them to common-tags which adds the default tags and then you use the your-module.tags in the top level code.
-
