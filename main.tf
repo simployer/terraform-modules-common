@@ -11,32 +11,17 @@ locals {
 			created-by-terraform	   = true
   	}
 	
-	#tags = merge(var.tags, local.mandatory_tags)
 	tags = merge(local.mandatory_tags, var.tags)
 }
 
-# Expose local tags and lifecycle to callers of this module
 output "tags" {
   value = local.tags
 }
-
-
-# Allows for adding tags locally
-variable "tags" {
-  description = "Tags from calling module"
-  type        = map(string)
-  default     = {}
+output "buildsubnets" {
+  value = ["/subscriptions/70981115-5fc9-4faa-a503-18e1541c0663/resourceGroups/shared/providers/Microsoft.Network/virtualNetworks/vnet-vd-cust-dev-tools-1/subnets/build1"]
+}
+output "internal_gateway_ips" {
+  value = ["188.95.241.4","83.241.137.26","213.192.71.242","147.111.120.62","91.184.138.88"]
 }
 
-# Enforces environment and project to be set
-variable "environment" {
-  description = "Development environment"
-  type        = string
-}
-
-variable "project" {
-  description = "project"
-  type        = string
-
-}
 
